@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh; /* Full height for centering */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s; /* Smooth transition for background change */
+        }
+        .confetti-bg {
+            background: url('img/confeitt1.gif') no-repeat center center fixed; /* Add confetti GIF */
+            background-size: cover; /* Cover the entire background */
+            position: absolute; /* Position it absolutely */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send it to the back */
+        }
+        .flower {
+            font-size: 50px;
+            animation: bloom 3s ease-in-out infinite alternate;
+        }
+        @keyframes bloom {
+            from { transform: scale(0.8); }
+            to { transform: scale(1.2); }
+        }
+        #memoryBtn {
+            padding: 15px 25px;
+            background: #ff758c;
+            color: white;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+            transition: background 0.3s;
+            display: none; /* Initially hidden */
+        }
+        #memoryBtn:hover {
+            background: #e63946;
+        }
+        .diary-container {
+            display: none;
+            position: relative;
+            width: 80%;
+            height: 500px;
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            background: white;
+            padding: 20px;
+        }
+        .diary {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            perspective: 1500px;
+        }
+        .page {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            background: white;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transform-origin: right;
+            transition: transform 1s;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .page img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            max-height: 70%; /* Ensures images do not exceed a certain height */
+            border-radius: 10px;
+            object-fit: contain; /* Ensures images fit within the area without cropping */
+        }
+        .page p {
+            font-size: 18px;
+            color: #333;
+            transition: opacity 0.5s;
+        }
+        .page.flipped {
+            transform: rotateY(-180deg);
+            text-align: right;
+        }
+        .page.flipped img, .page.flipped p, .page.flipped .date {
+            transform: rotateY(180deg);
+        }
+        .date {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+        .love-note {
+            display: none;
+            font-size: 24px;
+            color: white;
+            background: #ff758c;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: loveAppear 2s forwards;
+            text-align: center;
+            width: 50%;
+        }
+        @keyframes loveAppear {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #nextBtn {
+            padding: 15px 25px;
+            background: #ff758c;
+            color: white;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background 0.3s;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        #nextBtn:hover {
+            background: #e63946;
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti-bg"></div> <!-- Confetti background div -->
+    <h1 id="birthdayText">Happy Birthday My Love! ❤️🌍</h1>
+    <button id="memoryBtn">Open Memory Diary</button>
+    
+    <div class="diary-container">
+        <div class="diary" id="diary">
+            <!-- Blank Page at the Start -->
+            <div class="page">
+                <p>Our beautiful memories! ❤️</p>
+            </div>
+            <div class="page" id="page2">
+                <img src="img/img0.jpg" alt="Memory 2">
+                <p>Our first selfie! 🥰</p>
+                <div class="date">Date: 12 Nov 2023</div>
+            </div>
+            <div class="page" id="page3">
+                <img src="img/img1.jpg" alt="Memory 3">
+                <p>Another special moment! 💕</p>
+                <div class="date">Date: 17 Dec 2023</div>
+            </div>
+            <div class="page" id="page4">
+                <img src="img/img2.jpg" alt="Memory 4">
+                <p>Forever in my heart! 😍</p>
+                <div class="date">Date: 18 Dec 2023</div>
+            </div>
+            <div class="page" id="page5">
+                <img src="img/img3.jpg" alt="Memory 5">
+                <p>Our first movie date! 🎬</p>
+                <div class="date">Date: 11 March 2024</div>
+            </div>
+            <div class="page" id="page6">
+                <img src="img/img4.jpg" alt="Memory 6">
+                <p>First cheek kiss! 🥰</p>
+                <div class="date">Date: 19 March 2024</div>
+            </div>
+            <div class="page" id="page7">
+                <img src="img/img5.jpg" alt="Memory 7">
+                <p>First official kiss! 🌸</p>
+                <div class="date">Date: 1 April 2024</div>
+            </div>
+            <div class="page" id="page8">
+                <img src="img/img6.jpg" alt="Memory 8">
+                <p>Obsessed one..! 💖</p>
+                <div class="date">Date: 15 May 2024</div>
+            </div>
+            <div class="page" id="page9">
+                <img src="img/img7.jpg" alt="Memory 9">
+                <p>Our Official date! 🌍</p>
+                <div class="date">Date: 8 March 2024</div>
+            </div>
+            <div class="page" id="page10">
+                <img src="img/img8.jpg" alt="Memory 10">
+                <p>Tender kiss 💕</p>
+                <div class="date">Date: 12 June 2024</div>
+            </div>
+            <div class="page" id="page11">
+                <img src="img/img9.jpg" alt="Memory 11">
+                <p>Smile baby! 🌅</p>
+                <div class="date">Date: 2 May 2024</div>
+            </div>
+            <div class="page" id="page12">
+                <img src="img/img10.jpg" alt="Memory 12">
+                <p>Pout please! 💋</p>
+                <div class="date">Date: 30 May 2024</div>
+            </div>
+            <div class="page" id="page13">
+                <img src="img/img11.jpg" alt="Memory 13">
+                <p>Another movie date with you! 🛋️</p>
+                <div class="date">Date: 27 June 2024</div>
+            </div>
+            <div class="page" id="page14">
+                <img src="img/img12.jpg" alt="Memory 14">
+                <p>Just You and me! ❤️</p>
+                <div class="date">Date: 5 Oct 2024</div>
+            </div>
+            <div class="page" id="page15">
+                <img src="img/img13.jpg" alt="Memory 15">
+                <p>Fav of us! 💕</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page16">
+                <img src="img/img14.jpg" alt="Memory 16">
+                <p>2 cuties in one frame! 🥰</p>
+                <div class="date">Date: 4 Sept 2024</div>
+            </div>
+            <div class="page" id="page17">
+                <img src="img/img15.jpg" alt="Memory 17">
+                <p>Looking at my best view..! </p>
+                <div class="date">Date: 19 Nov 2024</div>
+            </div>
+            <div class="page" id="page18">
+                <img src="img/img16.jpg" alt="Memory 18">
+                <p>Together, we create our own sunshine! ☀️</p>
+                <div class="date">Date: 19 June 2024</div>
+            </div>
+            <div class="page" id="page19">
+                <img src="img/img17.jpg" alt="Memory 19">
+                <p>Looking at you baby...!❤️</p>
+                <div class="date">Date: 24 July 2024</div>
+            </div>
+            <div class="page" id="page20">
+                <img src="img/img18.jpg" alt="Memory 20">
+                <p>My everything......!🥰 </p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page21">
+                <img src="img/img19.jpg" alt="Memory 21">
+                <p>Sorry for this..! 🗺️</p>
+                <div class="date">Date: 14 Nov 2024</div>
+            </div>
+            <div class="page" id="page22">
+                <img src="img/img20.jpg" alt="Memory 22">
+                <p>What?! </p>
+                <div class="date">Date: 31 Oct 2024</div>
+            </div>
+            <div class="page" id="page23">
+                <img src="img/img21.jpg" alt="Memory 23">
+                <p>Blopper!🥰 </p>
+                <div class="date">Date: 16 Dec 2024</div>
+            </div>
+            <div class="page" id="page24">
+                <img src="img/img22.jpg" alt="Memory 24">
+                <p>Just us two! 💑</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page25">
+                <img src="img/img23.jpg" alt="Memory 25">
+                <p>Best one! 📸</p>
+                <div class="date">Date: 16 Dec 2024</div>
+            </div>
+            <div class="page" id="page26">
+                <img src="img/img24.jpg" alt="Memory 26">
+                <p>You make me smile! 😊</p>
+                <div class="date">Date: 17 Dec 2024</div>
+            </div>
+            <div class="page" id="page27">
+                <img src="img/img25.jpg" alt="Memory 27">
+                <p>Together is our favorite place! 🏡</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page28">
+                <img src="img/img26.jpg" alt="Memory 28">
+                <p>Love you to the moon and back! 🌙</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page29">
+                <img src="img/img27.jpg" alt="Memory 29">
+                <p>Every moment counts! ⏳</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <div class="page" id="page30">
+                <img src="img/img28.jpg" alt="Memory 30">
+                <p>Here's to many more! 🥂</p>
+                <div class="date">Date: 21 Dec 2024</div>
+            </div>
+            <!-- Blank Page at the End -->
+            <div class="page">
+                <p>Our beautiful memories! ❤️</p>
+            </div>
+        </div>
+        <button id="nextBtn">Next</button>
+    </div>
+    
+    <div class="love-note" id="loveNote">
+        Happiest Birthday Baby❤️ <br>
+        It’s been 10 months, It’s hard to believe how quickly time has flown by. Our friendship blossomed into something truly special, and every moment we've shared has deepened my affection for you. From our late-night talks to our silly adventures, you’ve brought so much joy and laughter into my life. I cherish the bond we’ve built and the love that continues to grow between us. Here’s to many more months of laughter, love, and unforgettable memories together! I love you more than anything! 💖
+    </div>
+
+    <script>
+        // Show birthday text and hide everything else
+        document.getElementById('birthdayText').style.display = 'block';
+        document.getElementById('memoryBtn').style.display = 'none';
+        document.body.classList.add('confetti-bg'); // Add confetti background
+
+        // After 3 seconds, hide birthday text and show the button
+        setTimeout(() => {
+            document.getElementById('birthdayText').style.display = 'none';
+            document.getElementById('memoryBtn').style.display = 'block';
+            document.body.classList.remove('confetti-bg'); // Remove confetti background
+        }, 3000);
+        
+        document.getElementById('memoryBtn').addEventListener('click', function() {
+            document.querySelector('.diary-container').style.display = 'block';
+            this.style.display = 'none'; // Hide the button after clicking
+        });
+        
+        let pages = document.querySelectorAll('.page');
+        let diaryContainer = document.querySelector('.diary-container');
+        let currentPage = 0;
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            if (currentPage < pages.length) {
+                pages[currentPage].classList.add('flipped');
+                currentPage++;
+                if (currentPage === pages.length) {
+                    setTimeout(() => {
+                        diaryContainer.style.display = 'none';
+                        showLoveNote();
+                    }, 5000);
+                }
+            }
+        });
+
+        function showLoveNote() {
+            document.getElementById('loveNote').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
